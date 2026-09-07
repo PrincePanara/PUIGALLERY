@@ -20,7 +20,7 @@ function Reveal({ children, delay = 0 }: {children: React.ReactNode;delay?: numb
 
 export function SelectedWork() {
   return (
-    <section className="w-full bg-paper px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
+    <section className="w-full bg-paper px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12">
       <div className="rt-meta text-mid">01 — INDEX</div>
       <h2
         className="mt-8 font-display font-medium text-ink"
