@@ -8,7 +8,6 @@ import { Nav } from './Nav';
 import { Hero } from './Hero';
 import { SelectedWork } from './SelectedWork';
 import { ProjectIndex } from './ProjectIndex';
-import { About } from './About';
 import { Contact } from './Contact';
 import { Footer } from './Footer';
 import { FinalTerminal } from './FinalTerminal';
@@ -79,7 +78,7 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
   }, []);
 
   const goTo = useCallback(
-    (id: 'work' | 'about' | 'contact') => {
+    (id: 'work' | 'contact') => {
       const scroll = () =>
       document.getElementById(id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
       if (project) {
@@ -148,7 +147,6 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
                 <Hero />
                 <SelectedWork />
                 <ProjectIndex onOpen={(p, origin) => openProject(p, origin)} />
-                <About />
                 <Contact onExit={() => setPhase('exit')} />
                 <Footer />
               </motion.main>

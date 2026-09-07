@@ -10,7 +10,7 @@ export function Nav({
 
 
 
-}: {onHome: () => void;onGo: (id: 'work' | 'about' | 'contact') => void;context?: string;}) {
+}: {onHome: () => void;onGo: (id: 'work' | 'contact') => void;context?: string;}) {
   const { hoverProps } = useUI();
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
@@ -41,7 +41,7 @@ export function Nav({
         </button>
         <div className="flex items-center gap-5 sm:gap-8">
           {context && <span className="rt-meta hidden text-white/50 sm:inline">{context}</span>}
-          {(['work', 'about', 'contact'] as const).map((id) =>
+          {(['work', 'contact'] as const).map((id) =>
           <button
             key={id}
             onClick={() => onGo(id)}
