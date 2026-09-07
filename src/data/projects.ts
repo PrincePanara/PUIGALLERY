@@ -17,6 +17,7 @@ export const projects: Project[] = [
     id: 'splash',
     number: '01',
     title: 'SPLASH',
+    image: '/Screens/adswar/splash.png',
     why: 'A single mark on black. The first frame sets the contrast the whole product runs on.',
     detail: { label: 'BRAND MARK', parts: ['LOGOTYPE', 'PROGRESS', 'SAFE AREA'] }
   },
@@ -24,6 +25,7 @@ export const projects: Project[] = [
     id: 'login',
     number: '02',
     title: 'LOGIN',
+    image: '/Screens/adswar/login.png',
     why: 'One field visible at a time so the keyboard never buries the primary action.',
     detail: { label: 'AUTH FORM', parts: ['INPUT', 'FOCUS RING', 'BUTTON', 'LEGAL'] },
     notes: [
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     id: 'home',
     number: '03',
     title: 'HOME',
+    image: '/Screens/adswar/home.png',
     why: 'Spend is the number people open the app for, so it outweighs everything else.',
     detail: { label: 'DASHBOARD', parts: ['BALANCE', 'CHART', 'CAMPAIGN ROW', 'TAB BAR'] },
     notes: [
@@ -45,6 +48,7 @@ export const projects: Project[] = [
     id: 'search',
     number: '04',
     title: 'SEARCH',
+    image: '/Screens/adswar/search.png',
     why: 'Filters are the real interface here — they sit above results, never behind a modal.',
     detail: { label: 'SEARCH COMPONENT', parts: ['INPUT', 'FILTER', 'CARD', 'BUTTON', 'NAVIGATION'] },
     notes: [
@@ -55,6 +59,7 @@ export const projects: Project[] = [
     id: 'details',
     number: '05',
     title: 'DETAILS',
+    image: '/Screens/adswar/details.png',
     why: 'Reach, price and audience are read together, so they share one block.',
     detail: { label: 'LISTING DETAIL', parts: ['MEDIA', 'STATS', 'AUDIENCE', 'CTA BAR'] }
   },
@@ -62,6 +67,7 @@ export const projects: Project[] = [
     id: 'profile',
     number: '06',
     title: 'PROFILE',
+    image: '/Screens/adswar/profile.png',
     why: 'Creator credibility is data, not copy. Numbers do the persuading.',
     detail: { label: 'PROFILE HEADER', parts: ['AVATAR', 'METRICS', 'TABS'] }
   },
@@ -69,6 +75,7 @@ export const projects: Project[] = [
     id: 'settings',
     number: '07',
     title: 'SETTINGS',
+    image: '/Screens/adswar/settings.png',
     why: 'Grouped by how often it is touched, not by how the backend is organised.',
     detail: { label: 'SETTINGS LIST', parts: ['GROUP', 'ROW', 'TOGGLE', 'DESTRUCTIVE'] }
   },
@@ -76,6 +83,7 @@ export const projects: Project[] = [
     id: 'success',
     number: '08',
     title: 'SUCCESS',
+    image: '/Screens/adswar/success.png',
     why: 'Confirmation carries the receipt, so nobody has to go hunting for it.',
     detail: { label: 'CONFIRMATION', parts: ['STATUS', 'RECEIPT', 'NEXT ACTION'] },
     notes: [
@@ -101,6 +109,7 @@ export const projects: Project[] = [
     id: 'login',
     number: '01',
     title: 'LOGIN',
+    image: '/Screens/qubeso/login.png',
     why: 'Institution first, credentials second — most users belong to one campus forever.',
     detail: { label: 'SIGN IN', parts: ['INSTITUTION', 'INPUT', 'BUTTON'] }
   },
@@ -108,6 +117,7 @@ export const projects: Project[] = [
     id: 'dashboard',
     number: '02',
     title: 'DASHBOARD',
+    image: '/Screens/qubeso/dashboard.png',
     why: 'Live exams sit above everything. An invigilator has one question at 9am.',
     detail: { label: 'OVERVIEW', parts: ['SIDE NAV', 'KPI', 'TABLE', 'STATUS'] },
     notes: [
@@ -118,6 +128,7 @@ export const projects: Project[] = [
     id: 'create',
     number: '03',
     title: 'CREATE EXAM',
+    image: '/Screens/qubeso/create.png',
     why: 'A four-step spine keeps a long setup legible without hiding what is left.',
     detail: { label: 'STEPPER', parts: ['STEP', 'FORM', 'SUMMARY', 'PRIMARY'] },
     notes: [
@@ -128,6 +139,7 @@ export const projects: Project[] = [
     id: 'questions',
     number: '04',
     title: 'QUESTIONS',
+    image: '/Screens/qubeso/questions.png',
     why: 'Bank on the left, editor on the right. Authors never lose their place.',
     detail: { label: 'EDITOR', parts: ['BANK', 'CANVAS', 'OPTION', 'SCORING'] }
   },
@@ -135,6 +147,7 @@ export const projects: Project[] = [
     id: 'students',
     number: '05',
     title: 'STUDENTS',
+    image: '/Screens/qubeso/students.png',
     why: 'Dense table, no cards. This screen is scanned, not admired.',
     detail: { label: 'DATA TABLE', parts: ['ROW', 'FILTER', 'BULK ACTION', 'PAGINATION'] }
   },
@@ -142,6 +155,7 @@ export const projects: Project[] = [
     id: 'results',
     number: '06',
     title: 'RESULTS',
+    image: '/Screens/qubeso/results.png',
     why: 'Distribution before individuals, because grading decisions are made on shape.',
     detail: { label: 'ANALYTICS', parts: ['HISTOGRAM', 'SEGMENT', 'EXPORT'] }
   },
@@ -149,6 +163,7 @@ export const projects: Project[] = [
     id: 'settings',
     number: '07',
     title: 'SETTINGS',
+    image: '/Screens/qubeso/settings.png',
     why: 'Proctoring rules read as sentences so policy owners can verify them.',
     detail: { label: 'POLICY', parts: ['SECTION', 'TOGGLE', 'HELP'] }
   }]
@@ -171,6 +186,7 @@ export const projects: Project[] = [
     id: 'home',
     number: '01',
     title: 'HOME',
+    image: '/Screens/optical/home.png',
     why: 'Editorial opening. The frame is the hero, the type stays out of its way.',
     detail: { label: 'HERO', parts: ['TYPE', 'PRODUCT', 'NAV'] }
   },
@@ -178,6 +194,7 @@ export const projects: Project[] = [
     id: 'catalog',
     number: '02',
     title: 'CATALOG',
+    image: '/Screens/optical/catalog.png',
     why: 'Face shape is the filter people actually think in.',
     detail: { label: 'CATALOG', parts: ['FILTER', 'TILE', 'SORT'] },
     notes: [
@@ -188,6 +205,7 @@ export const projects: Project[] = [
     id: 'product',
     number: '03',
     title: 'PRODUCT',
+    image: '/Screens/optical/product.png',
     why: 'Measurements sit beside the buy action — returns start with the wrong width.',
     detail: { label: 'PRODUCT', parts: ['GALLERY', 'SPEC', 'PRICE', 'CTA'] }
   },
@@ -195,6 +213,7 @@ export const projects: Project[] = [
     id: 'tryon',
     number: '04',
     title: 'TRY ON',
+    image: '/Screens/optical/tryon.png',
     why: 'Camera view stays full-bleed; controls float instead of framing it.',
     detail: { label: 'TRY ON', parts: ['VIEWPORT', 'CAROUSEL', 'CAPTURE'] }
   },
@@ -202,6 +221,7 @@ export const projects: Project[] = [
     id: 'cart',
     number: '05',
     title: 'CART',
+    image: '/Screens/optical/cart.png',
     why: 'Lens choices are editable in the cart, where the price question appears.',
     detail: { label: 'CART', parts: ['LINE ITEM', 'LENS', 'TOTAL'] }
   },
@@ -209,6 +229,7 @@ export const projects: Project[] = [
     id: 'checkout',
     number: '06',
     title: 'CHECKOUT',
+    image: '/Screens/optical/checkout.png',
     why: 'One column, one decision per row, total always visible.',
     detail: { label: 'CHECKOUT', parts: ['ADDRESS', 'PAYMENT', 'SUMMARY'] }
   }]
@@ -231,6 +252,7 @@ export const projects: Project[] = [
     id: 'overview',
     number: '01',
     title: 'OVERVIEW',
+    image: '/Screens/meridian/overview.png',
     why: 'Safe-to-spend, not balance. It is the number that changes behaviour.',
     detail: { label: 'OVERVIEW', parts: ['HEADLINE FIGURE', 'TREND', 'ACCOUNT ROW'] },
     notes: [
@@ -241,6 +263,7 @@ export const projects: Project[] = [
     id: 'accounts',
     number: '02',
     title: 'ACCOUNTS',
+    image: '/Screens/meridian/accounts.png',
     why: 'Accounts stack like physical cards so switching feels like handling them.',
     detail: { label: 'ACCOUNT STACK', parts: ['CARD', 'STACK', 'BALANCE'] }
   },
@@ -248,6 +271,7 @@ export const projects: Project[] = [
     id: 'transfer',
     number: '03',
     title: 'TRANSFER',
+    image: '/Screens/meridian/transfer.png',
     why: 'Amount is typed on a keypad, not a text field. Muscle memory wins.',
     detail: { label: 'TRANSFER', parts: ['AMOUNT', 'KEYPAD', 'RECIPIENT'] },
     notes: [
@@ -258,6 +282,7 @@ export const projects: Project[] = [
     id: 'card',
     number: '04',
     title: 'CARD',
+    image: '/Screens/meridian/card.png',
     why: 'Freeze is one tap from the card itself, where panic looks for it.',
     detail: { label: 'CARD CONTROLS', parts: ['CARD ART', 'FREEZE', 'LIMITS'] }
   },
@@ -265,6 +290,7 @@ export const projects: Project[] = [
     id: 'insights',
     number: '05',
     title: 'INSIGHTS',
+    image: '/Screens/meridian/insights.png',
     why: 'Categories are ranked by change, not by size. Change is the story.',
     detail: { label: 'INSIGHTS', parts: ['BAR CHART', 'CATEGORY', 'DELTA'] }
   },
@@ -272,6 +298,7 @@ export const projects: Project[] = [
     id: 'confirm',
     number: '06',
     title: 'CONFIRM',
+    image: '/Screens/meridian/confirm.png',
     why: 'A held button instead of a dialog. Deliberate, and reversible until release.',
     detail: { label: 'CONFIRM', parts: ['SUMMARY', 'HOLD BUTTON', 'FEE'] }
   }]
@@ -293,6 +320,7 @@ export const projects: Project[] = [
     id: 'tokens',
     number: '01',
     title: 'TOKENS',
+    image: '/Screens/atlas/tokens.png',
     why: 'Token, value and live preview on one line. No round trip to check a colour.',
     detail: { label: 'TOKEN TABLE', parts: ['SWATCH', 'ALIAS', 'VALUE', 'USAGE'] },
     notes: [
@@ -303,6 +331,7 @@ export const projects: Project[] = [
     id: 'components',
     number: '02',
     title: 'COMPONENTS',
+    image: '/Screens/atlas/components.png',
     why: 'Variants are laid out as a matrix — coverage gaps become visible.',
     detail: { label: 'VARIANT MATRIX', parts: ['AXIS', 'CELL', 'STATE'] }
   },
@@ -310,6 +339,7 @@ export const projects: Project[] = [
     id: 'typography',
     number: '03',
     title: 'TYPOGRAPHY',
+    image: '/Screens/atlas/typography.png',
     why: 'The scale is shown at true size. Ratios are meaningless in the abstract.',
     detail: { label: 'TYPE SCALE', parts: ['STEP', 'METRIC', 'SPECIMEN'] }
   },
@@ -317,6 +347,7 @@ export const projects: Project[] = [
     id: 'motion',
     number: '04',
     title: 'MOTION',
+    image: '/Screens/atlas/motion.png',
     why: 'Curves are editable and replayable, so duration is felt before it ships.',
     detail: { label: 'MOTION EDITOR', parts: ['CURVE', 'DURATION', 'REPLAY'] }
   },
@@ -324,6 +355,7 @@ export const projects: Project[] = [
     id: 'export',
     number: '05',
     title: 'EXPORT',
+    image: '/Screens/atlas/export.png',
     why: 'Diff before publish. Nobody should ship a token change blind.',
     detail: { label: 'EXPORT', parts: ['TARGET', 'DIFF', 'PUBLISH'] }
   }]
@@ -345,6 +377,7 @@ export const projects: Project[] = [
     id: 'today',
     number: '01',
     title: 'TODAY',
+    image: '/Screens/ferro/today.png',
     why: 'One session, one action. The app has no opinion until you start.',
     detail: { label: 'TODAY', parts: ['SESSION CARD', 'READINESS', 'START'] }
   },
@@ -352,6 +385,7 @@ export const projects: Project[] = [
     id: 'workout',
     number: '02',
     title: 'WORKOUT',
+    image: '/Screens/ferro/workout.png',
     why: 'Set logging is thumb-sized and never leaves the screen.',
     detail: { label: 'SET LOGGER', parts: ['SET ROW', 'STEPPER', 'REST'] },
     notes: [
@@ -362,6 +396,7 @@ export const projects: Project[] = [
     id: 'timer',
     number: '03',
     title: 'REST',
+    image: '/Screens/ferro/timer.png',
     why: 'Rest takes the whole screen because that is all you are doing.',
     detail: { label: 'REST TIMER', parts: ['RING', 'TIME', 'SKIP'] }
   },
@@ -369,6 +404,7 @@ export const projects: Project[] = [
     id: 'progress',
     number: '04',
     title: 'PROGRESS',
+    image: '/Screens/ferro/progress.png',
     why: 'Volume per week, per lift. Progress is a slope, not a number.',
     detail: { label: 'PROGRESS', parts: ['CHART', 'LIFT ROW', 'PR'] }
   },
@@ -376,6 +412,7 @@ export const projects: Project[] = [
     id: 'profile',
     number: '05',
     title: 'PROFILE',
+    image: '/Screens/ferro/profile.png',
     why: 'Streak sits with the data it comes from, not in a trophy case.',
     detail: { label: 'PROFILE', parts: ['HEADER', 'STREAK', 'HISTORY'] }
   }]
@@ -398,6 +435,7 @@ export const projects: Project[] = [
     id: 'discover',
     number: '01',
     title: 'DISCOVER',
+    image: '/Screens/nocturne/discover.png',
     why: 'Programmed like a schedule, not a recommendation feed.',
     detail: { label: 'DISCOVER', parts: ['SLOT', 'ARTWORK', 'NOW PLAYING'] }
   },
@@ -405,6 +443,7 @@ export const projects: Project[] = [
     id: 'player',
     number: '02',
     title: 'PLAYER',
+    image: '/Screens/nocturne/player.png',
     why: 'Waveform is the scrubber. Position and texture in one control.',
     detail: { label: 'PLAYER', parts: ['WAVEFORM', 'TRANSPORT', 'QUEUE'] },
     notes: [
@@ -415,6 +454,7 @@ export const projects: Project[] = [
     id: 'playlist',
     number: '03',
     title: 'PLAYLIST',
+    image: '/Screens/nocturne/playlist.png',
     why: 'Track rows carry duration and key — the label works in both.',
     detail: { label: 'TRACK LIST', parts: ['ROW', 'DURATION', 'KEY'] }
   },
@@ -422,6 +462,7 @@ export const projects: Project[] = [
     id: 'artist',
     number: '04',
     title: 'ARTIST',
+    image: '/Screens/nocturne/artist.png',
     why: 'Releases first, biography last. Nobody comes here to read.',
     detail: { label: 'ARTIST', parts: ['HEADER', 'RELEASE GRID', 'BIO'] }
   },
@@ -429,6 +470,7 @@ export const projects: Project[] = [
     id: 'library',
     number: '05',
     title: 'LIBRARY',
+    image: '/Screens/nocturne/library.png',
     why: 'A dense index. Saved music is searched, not browsed.',
     detail: { label: 'LIBRARY', parts: ['INDEX', 'SORT', 'ROW'] }
   }]

@@ -1,15 +1,19 @@
 import React from 'react';
+import { projectBySlug } from '../../data/projects';
 
 /**
- * Screens are now loaded dynamically as images from the public/Screens folder.
- * Make sure you drop the corresponding images (e.g. public/Screens/adswar/splash.png)
- * for each project and screen.
+ * Screens are now loaded dynamically as images.
+ * The path for each screen is explicitly defined in projects.ts.
  */
 export function ScreenRender({ slug, screenId }: {slug: string;screenId: string;}) {
+  const project = projectBySlug(slug);
+  const screen = project?.screens.find(s => s.id === screenId);
+  const imageSrc = screen?.image || `/Screens/${slug}/${screenId}.png`;
+
   return (
     <div className="flex h-full w-full items-center justify-center bg-ink overflow-hidden">
       <img 
-        src={`/Screens/${slug}/${screenId}.png`} 
+        src={imageSrc} 
         alt={`${slug} - ${screenId}`}
         className="h-full w-full object-cover"
         onError={(e) => {

@@ -15,6 +15,7 @@ export interface Screen {
   id: string;
   number: string;
   title: string;
+  image: string;
   /** one or two short lines — never a case study */
   why?: string;
   notes?: ScreenNote[];
