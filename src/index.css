@@ -1,0 +1,84 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+:root {
+  --color-ink: #050505;
+  --color-paper: #FFFFFF;
+  --color-off: #F5F5F3;
+  --color-mid: #8A8A8A;
+  --color-line: #DCDCDC;
+}
+
+:root.dark {
+  --color-ink: #FFFFFF;
+  --color-paper: #050505;
+  --color-off: #1A1A1A;
+  --color-mid: #8A8A8A;
+  --color-line: #333333;
+}
+
+html {
+  background: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  margin: 0;
+  font-family: 'Inter Tight', Helvetica, Arial, sans-serif;
+}
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+.rt-hide-cursor,
+.rt-hide-cursor * {
+  cursor: none !important;
+}
+.rt-meta {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.rt-scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.028) 0px,
+    rgba(255, 255, 255, 0.028) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.rt-noscroll {
+  overflow: hidden;
+}
+/* thin, quiet scrollbar so the shell reads as an interface */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+}
