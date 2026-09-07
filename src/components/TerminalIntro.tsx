@@ -63,8 +63,17 @@ export function TerminalIntro({
   }, [visibleLines, reduced]);
 
   useEffect(() => {
+    if (done && !reduced) {
+      const autoEnterTimer = window.setTimeout(() => {
+        onEnter();
+      }, 1500); // 1.5 second pause after finishing before auto-entering
+      return () => window.clearTimeout(autoEnterTimer);
+    }
+  }, [done, reduced, onEnter]);
+
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' || e.key === 'Escape') {
         e.preventDefault();
         onEnter();
       }
@@ -107,29 +116,19 @@ export function TerminalIntro({
               />
             </div>
           )}
-        </div>
-
-        {/* Enter Button */}
-        <AnimatePresence>
+          
+          {/* Keep cursor blinking at the end before it transitions */}
           {done && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
-              className="mt-16 sm:mt-24"
-            >
-              <button
-                onClick={onEnter}
-                className="group flex items-center gap-4 border border-white/20 px-6 py-4 text-[13px] sm:text-[14px] text-white transition-all duration-300 ease-out hover:border-white hover:bg-white hover:text-ink"
-              >
-                <span className="rt-meta tracking-widest">[ ENTER GALLERY</span>
-                <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">
-                  ↗ ]
-                </span>
-              </button>
-            </motion.div>
+            <div className="mb-1">
+              <span className="text-white/40 mr-3">&gt;</span>
+              <motion.span
+                className="ml-[2px] inline-block h-[15px] w-[8px] translate-y-[2px] bg-white"
+                animate={{ opacity: [1, 1, 0, 0] }}
+                transition={{ duration: 0.9, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}
+              />
+            </div>
           )}
-        </AnimatePresence>
+        </div>
       </div>
       
     </div>
