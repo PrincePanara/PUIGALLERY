@@ -18,7 +18,7 @@ function Big({ words, delay = 0 }: {words: string[];delay?: number;}) {
           className="block"
           initial={{ y: '105%' }}
           whileInView={{ y: 0 }}
-          viewport={{ once: true, margin: '-10%' }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.62, ease: [0.23, 1, 0.32, 1], delay: delay + i * 0.045 }}>
           
             {w}
