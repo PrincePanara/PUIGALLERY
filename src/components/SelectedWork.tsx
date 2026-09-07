@@ -20,7 +20,7 @@ function Reveal({ children, delay = 0 }: {children: React.ReactNode;delay?: numb
 
 export function SelectedWork() {
   return (
-    <section className="w-full bg-paper px-5 pb-24 pt-32 sm:px-8 sm:pb-40 sm:pt-56">
+    <section className="w-full bg-paper px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
       <div className="rt-meta text-mid">01 — INDEX</div>
       <h2
         className="mt-8 font-display font-medium text-ink"
@@ -30,7 +30,7 @@ export function SelectedWork() {
         <Reveal delay={0.06}>INTERFACES</Reveal>
       </h2>
 
-      <div className="mt-20 grid grid-cols-1 gap-10 border-t border-line pt-8 sm:mt-32 sm:grid-cols-3">
+      <div className="mt-12 grid grid-cols-1 gap-10 border-t border-line pt-8 sm:mt-20 sm:grid-cols-3">
         {[
         [String(totals.projects).padStart(2, '0'), 'PROJECTS'],
         [String(totals.screens), 'SCREENS'],
