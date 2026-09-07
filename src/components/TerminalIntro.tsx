@@ -17,17 +17,15 @@ export function TerminalIntro({
 }: {onEnter: () => void;reduced: boolean;}) {
   const script = useMemo<Line[]>(
     () => [
-    { text: '> pnpm dlx prince-panara@latest init', tone: 'cmd', gap: true },
-    { text: '✔ Preflight checks.', tone: 'ok' },
-    { text: '✔ Verifying framework. Found Portfolio OS.', tone: 'ok' },
-    { text: '✔ Validating UI System.', tone: 'ok' },
-    { text: '✔ Loading screen library.', tone: 'ok' },
-    { text: '✔ Initializing interface interactions.', tone: 'ok' },
-    { text: '✔ Booting system environment.', tone: 'ok', gap: true },
-    { text: 'ℹ Found data:', tone: 'info' },
-    { text: `  - ${String(totals.projects).padStart(2, '0')} Projects`, tone: 'info' },
-    { text: `  - ${totals.screens} Screens`, tone: 'info', gap: true },
-    { text: 'Success! System initialization completed.', tone: 'muted', gap: true },
+    { text: '> npx portfolio-os@latest init', tone: 'cmd', gap: true, pause: 800 },
+    { text: '✔ Preflight checks passed.', tone: 'ok' },
+    { text: '✔ Created interface components.', tone: 'ok' },
+    { text: '✔ Initialized project.', tone: 'ok', gap: true, pause: 1000 },
+    { text: '> npm install experience', tone: 'cmd', pause: 800 },
+    { text: `added ${totals.screens} screens in 1.2s`, tone: 'muted', gap: true, pause: 1000 },
+    { text: '> npx portfolio-os@latest start', tone: 'cmd', pause: 800 },
+    { text: `✔ Done. Loaded ${totals.projects} projects.`, tone: 'ok', gap: true },
+    { text: 'Success! System is ready.', tone: 'info', gap: true },
     { text: 'You may now enter the experience.', tone: 'muted', gap: true }
     ],
     []
@@ -53,10 +51,11 @@ export function TerminalIntro({
       if (i < line.text.length) {
         timer.current = window.setTimeout(tick, CHAR_MS);
       } else {
+        const delay = line.pause !== undefined ? line.pause : (line.gap ? 120 : 34);
         timer.current = window.setTimeout(() => {
           setVisible((v) => v + 1);
           setTyped('');
-        }, line.gap ? 120 : 34);
+        }, delay);
       }
     };
     timer.current = window.setTimeout(tick, 20);
