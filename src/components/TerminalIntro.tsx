@@ -4,7 +4,7 @@ import { totals } from '../data/projects';
 
 interface Line {
   text: string;
-  tone?: 'dim' | 'ok' | 'bright' | 'cmd';
+  tone?: 'dim' | 'ok' | 'bright' | 'cmd' | 'info' | 'muted';
   pause?: number;
   gap?: boolean;
 }
@@ -14,31 +14,22 @@ const CHAR_MS = 7;
 export function TerminalIntro({
   onEnter,
   reduced
-
-
-
 }: {onEnter: () => void;reduced: boolean;}) {
   const script = useMemo<Line[]>(
     () => [
-    { text: 'PRINCE.PANARA', tone: 'bright' },
-    { text: '————————————————————————————————', tone: 'dim' },
-    { text: 'SYSTEM BOOT', tone: 'dim', gap: true },
-    { text: '[OK] INITIALIZING INTERFACE', tone: 'ok' },
-    { text: '[OK] LOADING PROJECTS', tone: 'ok' },
-    { text: '[OK] LOADING UI SYSTEM', tone: 'ok' },
-    { text: '[OK] LOADING SCREEN LIBRARY', tone: 'ok' },
-    { text: '[OK] LOADING INTERACTIONS', tone: 'ok' },
-    { text: '[OK] LOADING EXPERIENCE', tone: 'ok', gap: true },
-    { text: `${String(totals.projects).padStart(2, '0')} PROJECTS FOUND`, tone: 'dim' },
-    { text: `${totals.screens} SCREENS FOUND`, tone: 'dim' },
-    { text: 'SYSTEM READY', tone: 'bright', gap: true },
-    { text: '$ whoami', tone: 'cmd' },
-    { text: 'prince_panara' },
-    { text: 'ui/ux designer' },
-    { text: 'product designer' },
-    { text: 'interface explorer', gap: true },
-    { text: '$ open experience', tone: 'cmd' }],
-
+    { text: '> pnpm dlx prince-panara@latest init', tone: 'cmd', gap: true },
+    { text: '✔ Preflight checks.', tone: 'ok' },
+    { text: '✔ Verifying framework. Found Portfolio OS.', tone: 'ok' },
+    { text: '✔ Validating UI System.', tone: 'ok' },
+    { text: '✔ Loading screen library.', tone: 'ok' },
+    { text: '✔ Initializing interface interactions.', tone: 'ok' },
+    { text: '✔ Booting system environment.', tone: 'ok', gap: true },
+    { text: 'ℹ Found data:', tone: 'info' },
+    { text: `  - ${String(totals.projects).padStart(2, '0')} Projects`, tone: 'info' },
+    { text: `  - ${totals.screens} Screens`, tone: 'info', gap: true },
+    { text: 'Success! System initialization completed.', tone: 'muted', gap: true },
+    { text: 'You may now enter the experience.', tone: 'muted', gap: true }
+    ],
     []
   );
 
@@ -85,11 +76,15 @@ export function TerminalIntro({
 
   const color = (tone?: Line['tone']) =>
   tone === 'ok' ?
-  '#F5F5F3' :
+  '#22c55e' : // text-green-500
+  tone === 'info' ?
+  '#3b82f6' : // text-blue-500
   tone === 'bright' ?
   '#FFFFFF' :
   tone === 'cmd' ?
   '#FFFFFF' :
+  tone === 'muted' ?
+  '#a3a3a3' : // text-muted-foreground
   '#8A8A8A';
 
   return (
@@ -104,27 +99,19 @@ export function TerminalIntro({
         </button>
       </div>
 
-      <div className="mx-auto flex w-full max-w-[760px] flex-1 flex-col justify-center font-mono text-[12px] leading-[1.85] sm:text-[13px]">
+      <div className="mx-auto flex w-full max-w-[760px] flex-1 flex-col justify-center font-mono text-[13px] leading-[1.85] sm:text-[14px]">
         {script.slice(0, visible).map((l, i) =>
         <div
           key={i}
           style={{ color: color(l.tone), marginBottom: l.gap ? 14 : 0 }}
-          className={l.tone === 'ok' ? 'tracking-[0.06em]' : 'tracking-[0.04em]'}>
-          
-            {l.tone === 'ok' ?
-          <>
-                <span className="text-white">[OK]</span>
-                <span className="text-mid">{l.text.replace('[OK]', '')}</span>
-              </> :
-
-          l.text
-          }
+          className="tracking-[0.02em]">
+            {l.text}
           </div>
         )}
         {visible < script.length &&
-        <div style={{ color: color(script[visible].tone) }} className="tracking-[0.04em]">
+        <div style={{ color: color(script[visible].tone) }} className="tracking-[0.02em]">
             {typed}
-            <span className="ml-[1px] inline-block h-[13px] w-[7px] translate-y-[2px] bg-white" />
+            <span className="ml-[1px] inline-block h-[14px] w-[8px] translate-y-[2px] bg-white" />
           </div>
         }
         {done &&
@@ -136,7 +123,7 @@ export function TerminalIntro({
           
             <span>$</span>
             <motion.span
-            className="inline-block h-[13px] w-[7px] bg-white"
+            className="inline-block h-[14px] w-[8px] bg-white"
             animate={{ opacity: [1, 1, 0, 0] }}
             transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1] }} />
           
