@@ -49,7 +49,7 @@ function Row({
         const r = ref.current?.getBoundingClientRect();
         if (r) onOpen(project, r);
       }}
-      className="group relative block w-full border-t border-line py-7 text-left sm:py-10"
+      className="group relative block w-full border-t border-line py-5 text-left sm:py-7"
       aria-label={`Open ${project.name}`}>
       
       <div className="flex items-start gap-4 sm:items-center sm:gap-10">
