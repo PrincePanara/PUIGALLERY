@@ -69,9 +69,9 @@ export function Nav({
         transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? 'bg-paper/85 dark:bg-ink/85 backdrop-blur-xl border-b border-ink/5 dark:border-white/5 py-3 sm:py-4 shadow-[0_4px_30px_rgba(0,0,0,0.02)] dark:shadow-none' 
-            : 'bg-transparent py-5 sm:py-6'
-        } px-5 sm:px-8 text-ink dark:text-white`}
+            ? 'bg-paper/90 dark:bg-ink/90 backdrop-blur-xl border-b border-ink/10 dark:border-white/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)] text-ink dark:text-white' 
+            : 'bg-transparent py-5 sm:py-6 mix-blend-difference text-white'
+        } px-5 sm:px-8`}
       >
         <div className="flex items-center justify-between">
           
@@ -86,7 +86,9 @@ export function Nav({
           </button>
 
           {/* Center: Desktop Navigation */}
-          <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-ink/5 dark:bg-white/5 p-1 border border-ink/5 dark:border-white/5 backdrop-blur-md">
+          <div className={`hidden sm:flex items-center gap-1.5 rounded-full p-1 border backdrop-blur-md transition-colors duration-300 ${
+            scrolled ? 'bg-ink/5 dark:bg-white/5 border-ink/10 dark:border-white/10' : 'bg-white/10 border-white/20'
+          }`}>
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeSection === item.id;
@@ -97,13 +99,15 @@ export function Nav({
                   onClick={() => onGo(item.id)}
                   {...hoverProps('OPEN')}
                   className={`relative flex items-center gap-2.5 rounded-full px-5 py-2.5 rt-meta text-[13px] tracking-widest transition-colors duration-200 ${
-                    isActive ? 'text-white dark:text-ink' : 'text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white'
+                    isActive 
+                      ? (scrolled ? 'text-white dark:text-ink' : 'text-ink') 
+                      : (scrolled ? 'text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white' : 'text-white/70 hover:text-white')
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 rounded-full bg-ink dark:bg-white"
+                      className={`absolute inset-0 rounded-full ${scrolled ? 'bg-ink dark:bg-white' : 'bg-white'}`}
                       transition={{ type: "spring", stiffness: 350, damping: 25 }}
                     />
                   )}
@@ -119,7 +123,7 @@ export function Nav({
           {/* Right: Actions */}
           <div className="flex items-center gap-4">
             {context && (
-              <span className="rt-meta hidden text-ink/40 dark:text-white/40 sm:inline tracking-widest">
+              <span className={`rt-meta hidden sm:inline tracking-widest ${scrolled ? 'text-ink/40 dark:text-white/40' : 'text-white/40'}`}>
                 {context}
               </span>
             )}
@@ -127,7 +131,9 @@ export function Nav({
             <button
               onClick={toggleTheme}
               {...hoverProps('OPEN')}
-              className="group flex h-10 w-10 items-center justify-center rounded-full bg-ink/5 dark:bg-white/5 border border-ink/5 dark:border-white/5 transition-all duration-200 hover:bg-ink/10 dark:hover:bg-white/10"
+              className={`group flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 ${
+                scrolled ? 'bg-ink/5 dark:bg-white/5 border-ink/10 dark:border-white/10 hover:bg-ink/10 dark:hover:bg-white/10' : 'bg-white/10 border-white/20 hover:bg-white/20'
+              }`}
               aria-label="Toggle Theme"
             >
               {theme === 'light' ? (
@@ -141,7 +147,9 @@ export function Nav({
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               {...hoverProps('OPEN')}
-              className="sm:hidden flex h-10 w-10 items-center justify-center rounded-full bg-ink/5 dark:bg-white/5 border border-ink/5 dark:border-white/5 transition-all duration-200"
+              className={`sm:hidden flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 ${
+                scrolled ? 'bg-ink/5 dark:bg-white/5 border-ink/10 dark:border-white/10' : 'bg-white/10 border-white/20'
+              }`}
             >
               {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
