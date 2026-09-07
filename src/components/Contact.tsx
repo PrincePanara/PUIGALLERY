@@ -9,25 +9,7 @@ const LINKS: [string, string][] = [
 ['INSTAGRAM', 'https://instagram.com']];
 
 
-function Big({ words, delay = 0 }: {words: string[];delay?: number;}) {
-  return (
-    <>
-      {words.map((w, i) =>
-      <span key={w + i} className="block overflow-hidden">
-          <motion.span
-          className="block"
-          initial={{ y: '105%' }}
-          whileInView={{ y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.62, ease: [0.23, 1, 0.32, 1], delay: delay + i * 0.045 }}>
-          
-            {w}
-          </motion.span>
-        </span>
-      )}
-    </>);
 
-}
 
 export function Contact({ onExit }: {onExit: () => void;}) {
   const { hoverProps } = useUI();
@@ -39,22 +21,7 @@ export function Contact({ onExit }: {onExit: () => void;}) {
         <span className="rt-meta text-mid">RESPONDS IN 24H</span>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-16 sm:mt-20 lg:grid-cols-[1.15fr_1fr]">
-        <div
-          className="font-display font-medium text-ink"
-          style={{ fontSize: 'clamp(56px, 12vw, 190px)', lineHeight: 0.82, letterSpacing: '-0.06em' }}>
-          
-          <Big words={['SO...', 'HAVE', 'AN', 'IDEA?']} />
-        </div>
-        <div
-          className="font-display font-medium text-mid lg:pt-10"
-          style={{ fontSize: 'clamp(46px, 9vw, 140px)', lineHeight: 0.84, letterSpacing: '-0.06em' }}>
-          
-          <Big words={["LET'S", 'MAKE', 'IT', 'REAL.']} delay={0.08} />
-        </div>
-      </div>
-
-      <div className="mt-16 grid grid-cols-1 border-t border-line sm:mt-24 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-4">
         {LINKS.map(([label, href]) =>
         <a
           key={label}
