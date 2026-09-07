@@ -18,10 +18,10 @@ export function About() {
         
         <span className="block overflow-hidden">
           <motion.span
-            className="block"
+            className="block text-white"
             initial={{ y: '105%' }}
             whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: '-15%' }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}>
             
             A LITTLE
@@ -32,7 +32,7 @@ export function About() {
             className="block"
             initial={{ y: '105%' }}
             whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: '-15%' }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.06 }}>
             
             ABOUT ME.
@@ -51,7 +51,7 @@ export function About() {
               className="block"
               initial={{ y: '105%' }}
               whileInView={{ y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.65, ease: [0.23, 1, 0.32, 1], delay: i * 0.05 }}>
               
                 {l}
