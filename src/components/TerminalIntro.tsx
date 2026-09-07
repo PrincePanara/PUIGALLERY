@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CHAR_MS = 35; // slightly slower typing for a personal feel
+const CHAR_MS = 25; // Faster typing for terminal feel
 
 interface Line {
   text: string;
@@ -89,19 +89,19 @@ export function TerminalIntro({
 
       {/* Main Content Area */}
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center px-4 sm:px-0">
-        <div className="text-[22px] sm:text-[32px] md:text-[40px] leading-[1.4] tracking-tight font-display font-medium text-white/90">
+        <div className="font-mono text-[14px] sm:text-[15px] leading-[1.8] tracking-widest text-white/90">
           
           {lines.slice(0, visibleLines).map((l, i) => (
-            <div key={i} className={`opacity-100 ${l.gap ? 'mb-8 sm:mb-12' : 'mb-1'}`}>
-              {l.text}
+            <div key={i} className={`opacity-100 ${l.gap ? 'mb-6 sm:mb-8' : 'mb-1'}`}>
+              <span className="text-white/40 mr-3">&gt;</span>{l.text}
             </div>
           ))}
           
           {visibleLines < lines.length && (
-            <div className={`${lines[visibleLines].gap ? 'mb-8 sm:mb-12' : 'mb-1'}`}>
-              {typed}
+            <div className={`${lines[visibleLines].gap ? 'mb-6 sm:mb-8' : 'mb-1'}`}>
+              <span className="text-white/40 mr-3">&gt;</span>{typed}
               <motion.span
-                className="ml-1 inline-block h-[0.8em] w-[4px] translate-y-[2px] bg-white/80"
+                className="ml-[2px] inline-block h-[15px] w-[8px] translate-y-[2px] bg-white"
                 animate={{ opacity: [1, 1, 0, 0] }}
                 transition={{ duration: 0.9, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}
               />
