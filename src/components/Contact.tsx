@@ -33,13 +33,13 @@ export function Contact({ onExit }: {onExit: () => void;}) {
   const { hoverProps } = useUI();
 
   return (
-    <section id="contact" className="w-full bg-off px-5 py-28 sm:px-8 sm:py-40">
+    <section id="contact" className="w-full bg-off px-5 py-16 sm:px-8 sm:py-24">
       <div className="flex items-baseline justify-between border-b border-line pb-5">
         <span className="rt-meta text-mid">03 — CONTACT</span>
         <span className="rt-meta text-mid">RESPONDS IN 24H</span>
       </div>
 
-      <div className="mt-20 grid grid-cols-1 gap-16 sm:mt-32 lg:grid-cols-[1.15fr_1fr]">
+      <div className="mt-12 grid grid-cols-1 gap-16 sm:mt-20 lg:grid-cols-[1.15fr_1fr]">
         <div
           className="font-display font-medium text-ink"
           style={{ fontSize: 'clamp(56px, 12vw, 190px)', lineHeight: 0.82, letterSpacing: '-0.06em' }}>
@@ -54,7 +54,7 @@ export function Contact({ onExit }: {onExit: () => void;}) {
         </div>
       </div>
 
-      <div className="mt-24 grid grid-cols-1 border-t border-line sm:mt-36 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-16 grid grid-cols-1 border-t border-line sm:mt-24 sm:grid-cols-2 lg:grid-cols-4">
         {LINKS.map(([label, href]) =>
         <a
           key={label}
@@ -74,7 +74,7 @@ export function Contact({ onExit }: {onExit: () => void;}) {
         )}
       </div>
 
-      <div className="mt-16 flex flex-wrap items-center justify-between gap-6">
+      <div className="mt-12 flex flex-wrap items-center justify-between gap-6">
         <span className="rt-meta text-mid">END OF EXPERIENCE</span>
         <button
           onClick={onExit}

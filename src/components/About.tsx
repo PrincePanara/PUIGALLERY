@@ -6,14 +6,14 @@ const TAGS = ['UI / UX', 'PRODUCT', 'WEB', 'MOBILE', 'INTERACTION'];
 
 export function About() {
   return (
-    <section id="about" className="w-full bg-ink px-5 py-28 sm:px-8 sm:py-44">
+    <section id="about" className="w-full bg-ink px-5 py-16 sm:px-8 sm:py-24">
       <div className="flex items-baseline justify-between border-b border-white/12 pb-5">
         <span className="rt-meta text-mid">02 — ABOUT</span>
         <span className="rt-meta text-mid">KOLKATA · IST</span>
       </div>
 
       <h2
-        className="mt-16 font-display font-medium text-white sm:mt-24"
+        className="mt-12 font-display font-medium text-white sm:mt-16"
         style={{ fontSize: 'clamp(40px, 7vw, 110px)', lineHeight: 0.9, letterSpacing: '-0.05em' }}>
         
         <span className="block overflow-hidden">
@@ -40,7 +40,7 @@ export function About() {
         </span>
       </h2>
 
-      <div className="mt-24 grid grid-cols-1 gap-14 sm:mt-40 lg:grid-cols-[1fr_240px]">
+      <div className="mt-16 grid grid-cols-1 gap-14 sm:mt-24 lg:grid-cols-[1fr_240px]">
         <div
           className="font-display font-medium text-white"
           style={{ fontSize: 'clamp(38px, 8.4vw, 132px)', lineHeight: 0.88, letterSpacing: '-0.055em' }}>

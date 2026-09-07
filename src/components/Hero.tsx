@@ -27,7 +27,7 @@ export function Hero() {
   }, [pointerFine, reduced, px, py]);
 
   return (
-    <section className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-paper pt-24 sm:pt-28">
+    <section className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-paper pt-16 sm:pt-20">
       <div className="flex items-start justify-between px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0 }}
@@ -85,7 +85,7 @@ export function Hero() {
         </motion.h1>
       </div>
 
-      <div className="flex flex-col gap-8 px-5 pb-8 sm:px-8 sm:pb-10">
+      <div className="flex flex-col gap-8 px-5 pb-6 sm:px-8 sm:pb-8">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}

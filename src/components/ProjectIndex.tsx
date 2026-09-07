@@ -127,7 +127,7 @@ export function ProjectIndex({
   const { reduced } = useUI();
 
   return (
-    <section id="work" className="w-full bg-paper px-5 pb-28 sm:px-8 sm:pb-44">
+    <section id="work" className="w-full bg-paper px-5 pb-16 sm:px-8 sm:pb-24">
       <div className="flex items-baseline justify-between pb-6">
         <span className="rt-meta text-mid">PROJECT INDEX</span>
         <span className="rt-meta text-mid">
