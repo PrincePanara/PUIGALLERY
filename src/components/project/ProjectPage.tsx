@@ -22,7 +22,13 @@ export function ProjectPage({
   const [index, setIndex] = useState(0);
   const [mode, setMode] = useState<ViewMode>('GRID');
   const [seqIndex, setSeqIndex] = useState(0);
-  const [zoom, setZoom] = useState<Screen | null>(null);
+  const [zoom, setZoom] = useState<Screen | null>(() => {
+    if (typeof window !== 'undefined') {
+      const sId = new URLSearchParams(window.location.search).get('screen');
+      if (sId) return project.screens.find(sc => sc.id === sId) || null;
+    }
+    return null;
+  });
   const allRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -35,6 +41,34 @@ export function ProjectPage({
     const s = project.screens[index];
     if (s) onScreenSeen(`${project.slug}/${s.id}`);
   }, [index, project, onScreenSeen]);
+
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      const state = e.state;
+      if (state?.level === 'screen') {
+        const s = project.screens.find(sc => sc.id === state.screenId);
+        setZoom(s || null);
+      } else {
+        setZoom(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [project.screens]);
+
+  const handleZoom = useCallback((screen: Screen | null) => {
+    if (screen) {
+      window.history.pushState({ level: 'screen', slug: project.slug, screenId: screen.id }, '', `?project=${project.slug}&screen=${screen.id}`);
+      setZoom(screen);
+    } else {
+      if (window.history.state?.level === 'screen') {
+        window.history.back();
+      } else {
+        setZoom(null);
+        window.history.pushState({ level: 'project', slug: project.slug }, '', `?project=${project.slug}`);
+      }
+    }
+  }, [project.slug]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -93,7 +127,7 @@ export function ProjectPage({
         </div>
       </header>
 
-      <ScreenViewer project={project} index={index} setIndex={setIndex} onZoom={setZoom} />
+      <ScreenViewer project={project} index={index} setIndex={setIndex} onZoom={handleZoom} />
 
       <AllScreens
         ref={allRef}
@@ -102,14 +136,14 @@ export function ProjectPage({
         setMode={setMode}
         seqIndex={seqIndex}
         setSeqIndex={setSeqIndex}
-        onZoom={setZoom} />
+        onZoom={handleZoom} />
       
 
       <ProjectDNA project={project} />
 
       <ProjectOutro project={project} next={nextProject} onNext={onOpenProject} onIndex={onExit} />
 
-      <ScreenZoom project={project} screen={zoom} onClose={() => setZoom(null)} />
+      <ScreenZoom project={project} screen={zoom} onClose={() => handleZoom(null)} />
     </motion.main>);
 
 }

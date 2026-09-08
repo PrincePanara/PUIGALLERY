@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Project } from '../types/project';
+import { projects } from '../data/projects';
 import { useUI } from '../contexts/UIContext';
 import { TerminalIntro } from './TerminalIntro';
 import { BootTransition } from './BootTransition';
@@ -22,7 +23,13 @@ type Phase = 'boot' | 'reveal' | 'site' | 'exit';
 export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
   const { reduced } = useUI();
   const [phase, setPhase] = useState<Phase>(skipBoot ? 'site' : 'boot');
-  const [project, setProject] = useState<Project | null>(null);
+  const [project, setProject] = useState<Project | null>(() => {
+    if (typeof window !== 'undefined') {
+      const pSlug = new URLSearchParams(window.location.search).get('project');
+      if (pSlug) return projects.find(p => p.slug === pSlug) || null;
+    }
+    return null;
+  });
   const [pending, setPending] = useState<{project: Project;origin: {x: number;y: number;};} | null>(null);
   const [screensExplored, setScreensExplored] = useState(0);
   const timers = useRef<number[]>([]);
@@ -34,7 +41,38 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
     setScreensExplored(seen.current.size);
   }, []);
 
-  useEffect(() => () => timers.current.forEach(window.clearTimeout), []);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.history.state) {
+      const params = new URLSearchParams(window.location.search);
+      const pSlug = params.get('project');
+      const sId = params.get('screen');
+      if (sId && pSlug) {
+        window.history.replaceState({ level: 'screen', slug: pSlug, screenId: sId }, '', window.location.search);
+      } else if (pSlug) {
+        window.history.replaceState({ level: 'project', slug: pSlug }, '', window.location.search);
+      } else {
+        window.history.replaceState({ level: 'home' }, '', window.location.pathname);
+      }
+    }
+
+    const handlePopState = (e: PopStateEvent) => {
+      const state = e.state;
+      if (state?.level === 'project' || state?.level === 'screen') {
+        const p = projects.find(pr => pr.slug === state.slug);
+        if (p) {
+          setProject(p);
+          // If we popped, we want to immediately restore the scroll pos if needed, but smooth scrolling can be left out.
+        }
+      } else {
+        setProject(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      timers.current.forEach(window.clearTimeout);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   const enter = useCallback(() => {
     setPhase('reveal');
@@ -54,6 +92,9 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
   const openProject = useCallback(
     (p: Project, origin?: DOMRect) => {
+      if (typeof window !== 'undefined' && window.history.state?.slug !== p.slug) {
+        window.history.pushState({ level: 'project', slug: p.slug }, '', `?project=${p.slug}`);
+      }
       const o = origin ?
       { x: origin.left + origin.width / 2, y: origin.top + origin.height / 2 } :
       { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -69,6 +110,9 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
   );
 
   const closeProject = useCallback(() => {
+    if (typeof window !== 'undefined' && window.history.state?.level !== 'home') {
+      window.history.pushState({ level: 'home' }, '', window.location.pathname);
+    }
     setProject(null);
     const t = window.setTimeout(() => {
       document.getElementById('work')?.scrollIntoView({ behavior: 'auto', block: 'start' });
@@ -92,6 +136,9 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
   );
 
   const home = useCallback(() => {
+    if (typeof window !== 'undefined' && window.history.state?.level !== 'home') {
+      window.history.pushState({ level: 'home' }, '', window.location.pathname);
+    }
     setProject(null);
     setPhase('site');
     window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
