@@ -1,6 +1,138 @@
 import type { Project } from '../types/project';
 
 export const projects: Project[] = [
+  {
+    id: 101,
+    slug: 'box-cricket',
+    name: 'BOX CRICKET',
+    type: 'mobile',
+    domain: 'boxcricket.app',
+    category: 'MOBILE APPLICATION',
+    role: 'PRODUCT DESIGN',
+    year: '2026',
+    status: 'LIVE',
+    line: 'A comprehensive mobile platform for managing box cricket tournaments, teams, and players.',
+    accent: '#22C55E',
+    screens: [
+      {
+        id: 'user-profile',
+        number: '01',
+        title: 'USER PROFILE',
+        image: '/Box cricket/user profile screen 16.png',
+        why: 'Personal hub displaying player stats and activity.',
+        detail: { label: 'PROFILE', parts: ['USER', 'STATS', 'ACTIVITY'] },
+        notes: []
+      },
+      {
+        id: 'admin-dashboard',
+        number: '02',
+        title: 'ADMIN DASHBOARD',
+        image: '/Box cricket/Admin dasbored screen 22.png',
+        why: 'Central control panel for league operators to monitor operations.',
+        detail: { label: 'DASHBOARD', parts: ['OVERVIEW', 'METRICS', 'ALERTS'] },
+        notes: []
+      },
+      {
+        id: 'manage-ground-1',
+        number: '03',
+        title: 'MANAGE GROUND',
+        image: '/Box cricket/Manege Ground screen 23.png',
+        why: 'Interface for configuring turf parameters and availability.',
+        detail: { label: 'GROUNDS', parts: ['LIST', 'STATUS', 'SLOTS'] },
+        notes: []
+      },
+      {
+        id: 'manage-ground-2',
+        number: '04',
+        title: 'GROUND DETAILS',
+        image: '/Box cricket/Manege Ground screen 24.png',
+        why: 'Detailed view of specific ground facilities and bookings.',
+        detail: { label: 'DETAILS', parts: ['FACILITIES', 'BOOKINGS', 'INFO'] },
+        notes: []
+      },
+      {
+        id: 'manage-teams',
+        number: '05',
+        title: 'MANAGE TEAMS',
+        image: '/Box cricket/Manage Teams screen 25.png',
+        why: 'Overview of all registered teams participating in the tournament.',
+        detail: { label: 'TEAMS', parts: ['DIRECTORY', 'STATS', 'STATUS'] },
+        notes: []
+      },
+      {
+        id: 'team-details',
+        number: '06',
+        title: 'TEAM DETAILS',
+        image: '/Box cricket/Team detais screen 26.png',
+        why: 'Deep dive into team composition, performance, and match history.',
+        detail: { label: 'TEAM', parts: ['ROSTER', 'HISTORY', 'PERFORMANCE'] },
+        notes: []
+      },
+      {
+        id: 'team-add',
+        number: '07',
+        title: 'ADD TEAM',
+        image: '/Box cricket/Team ADD screen 27.png',
+        why: 'Streamlined form for registering and configuring a new team.',
+        detail: { label: 'REGISTER', parts: ['FORM', 'DETAILS', 'ROSTER'] },
+        notes: []
+      },
+      {
+        id: 'manage-player',
+        number: '08',
+        title: 'MANAGE PLAYERS',
+        image: '/Box cricket/Manage palyer screen 28.png',
+        why: 'Comprehensive directory for managing all registered players.',
+        detail: { label: 'PLAYERS', parts: ['DIRECTORY', 'STATS', 'FILTER'] },
+        notes: []
+      },
+      {
+        id: 'manage-player-add',
+        number: '09',
+        title: 'ADD NEW PLAYER',
+        image: '/Box cricket/manage player add new 34.png',
+        why: 'Onboarding interface for adding new individual players.',
+        detail: { label: 'ONBOARD', parts: ['INPUT', 'UPLOAD', 'SAVE'] },
+        notes: []
+      },
+      {
+        id: 'admin-view-tournament',
+        number: '10',
+        title: 'TOURNAMENT VIEW',
+        image: '/Box cricket/admin view Tournament 30.png',
+        why: 'Detailed breakdown of a specific ongoing tournament.',
+        detail: { label: 'TOURNAMENT', parts: ['BRACKET', 'TEAMS', 'FIXTURES'] },
+        notes: []
+      },
+      {
+        id: 'create-tournament',
+        number: '11',
+        title: 'CREATE TOURNAMENT',
+        image: '/Box cricket/Create tornament screen 31.png',
+        why: 'Wizard for establishing new tournament structures and rulesets.',
+        detail: { label: 'CREATE', parts: ['WIZARD', 'RULES', 'SCHEDULE'] },
+        notes: []
+      },
+      {
+        id: 'tournaments-list',
+        number: '12',
+        title: 'TOURNAMENTS LIST',
+        image: '/Box cricket/Tournaments 32.png',
+        why: 'Directory of all upcoming, active, and completed tournaments.',
+        detail: { label: 'LISTING', parts: ['ACTIVE', 'UPCOMING', 'ARCHIVED'] },
+        notes: []
+      },
+      {
+        id: 'reports',
+        number: '13',
+        title: 'REPORTS',
+        image: '/Box cricket/Report screen 33.png',
+        why: 'Analytics and financial reporting for venue operators.',
+        detail: { label: 'ANALYTICS', parts: ['FINANCE', 'BOOKINGS', 'EXPORT'] },
+        notes: []
+      }
+    ]
+  },
 
   {
     id: 100,
@@ -579,7 +711,7 @@ export const projects: Project[] = [
 export const totals = {
   projects: projects.length,
   screens: projects.reduce((n, p) => n + p.screens.length, 0),
-  products: 9
+  products: 10
 };
 
 export function projectBySlug(slug: string) {
