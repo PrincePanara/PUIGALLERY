@@ -40,20 +40,7 @@ export function Hero() {
             {totals.projects} PROJECTS · {totals.screens} SCREENS
           </div>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.6 }}
-          className="hidden text-right sm:block">
-          
-          <div className="rt-meta text-mid">
-            X {String(coords.x).padStart(3, '0')} · Y {String(coords.y).padStart(3, '0')}
-          </div>
-          <div className="rt-meta mt-2 flex items-center justify-end gap-2 text-ink/40">
-            <span className="inline-block h-[5px] w-[5px] rounded-full bg-[#12B76A]" />
-            SYSTEM ONLINE
-          </div>
-        </motion.div>
+
       </div>
 
       <div className="relative px-4 sm:px-6">
