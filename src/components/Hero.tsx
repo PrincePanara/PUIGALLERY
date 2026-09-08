@@ -27,13 +27,15 @@ export function Hero() {
   }, [pointerFine, reduced, px, py]);
 
   return (
-    <section className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-paper pt-16 sm:pt-20">
-
+    <section className="relative flex min-h-[auto] sm:min-h-[100svh] w-full flex-col justify-center sm:justify-between overflow-hidden bg-paper pt-32 pb-16 gap-16 sm:pb-0 sm:gap-0 sm:pt-20">
+      
+      {/* Spacer to keep desktop layout perfectly centered with justify-between */}
+      <div className="hidden sm:block" />
 
       <div className="relative px-4 sm:px-6">
         <motion.h1
           className="select-none font-display font-medium text-ink"
-          style={{ fontSize: 'clamp(84px, 21.5vw, 380px)', lineHeight: 0.8, letterSpacing: '-0.055em' }}>
+          style={{ fontSize: 'clamp(52px, 17vw, 380px)', lineHeight: 0.8, letterSpacing: '-0.055em' }}>
           
           {['PRINCE', 'PANARA'].map((word, i) =>
           <span key={word} className="block overflow-hidden">
