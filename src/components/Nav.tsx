@@ -67,9 +67,9 @@ export function Nav({
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 text-ink dark:text-white ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 text-ink ${
           scrolled 
-            ? 'bg-paper/90 dark:bg-ink/90 backdrop-blur-xl border-b border-ink/10 dark:border-white/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)]' 
+            ? 'bg-paper/90 backdrop-blur-xl border-b border-ink/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)]' 
             : 'bg-transparent py-5 sm:py-6'
         } px-5 sm:px-8`}
       >
@@ -86,7 +86,7 @@ export function Nav({
           </button>
 
           {/* Center: Desktop Navigation */}
-          <div className="hidden sm:flex items-center gap-1.5 rounded-full p-1 border backdrop-blur-md transition-colors duration-300 bg-ink/5 dark:bg-white/5 border-ink/10 dark:border-white/10">
+          <div className="hidden sm:flex items-center gap-1.5 rounded-full p-1 border backdrop-blur-md transition-colors duration-300 bg-ink/5 border-ink/10">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeSection === item.id;
@@ -98,14 +98,14 @@ export function Nav({
                   {...hoverProps('OPEN')}
                   className={`relative flex items-center gap-2.5 rounded-full px-5 py-2.5 rt-meta text-[13px] tracking-widest transition-colors duration-200 ${
                     isActive 
-                      ? 'text-white dark:text-ink' 
-                      : 'text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white'
+                      ? 'text-paper' 
+                      : 'text-ink/70 hover:text-ink'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 rounded-full bg-ink dark:bg-white"
+                      className="absolute inset-0 rounded-full bg-ink"
                       transition={{ type: "spring", stiffness: 350, damping: 25 }}
                     />
                   )}
@@ -121,7 +121,7 @@ export function Nav({
           {/* Right: Actions */}
           <div className="flex items-center gap-4">
             {context && (
-              <span className="rt-meta hidden sm:inline tracking-widest text-ink/40 dark:text-white/40">
+              <span className="rt-meta hidden sm:inline tracking-widest text-ink/40">
                 {context}
               </span>
             )}
@@ -129,7 +129,7 @@ export function Nav({
             <button
               onClick={toggleTheme}
               {...hoverProps('OPEN')}
-              className="group flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 bg-ink/5 dark:bg-white/5 border-ink/10 dark:border-white/10 hover:bg-ink/10 dark:hover:bg-white/10"
+              className="group flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 bg-ink/5 border-ink/10 hover:bg-ink/10"
               aria-label="Toggle Theme"
             >
               {theme === 'light' ? (
@@ -143,7 +143,7 @@ export function Nav({
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               {...hoverProps('OPEN')}
-              className="sm:hidden flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 bg-ink/5 dark:bg-white/5 border-ink/10 dark:border-white/10 hover:bg-ink/10 dark:hover:bg-white/10"
+              className="sm:hidden flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 bg-ink/5 border-ink/10 hover:bg-ink/10"
             >
               {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
@@ -175,8 +175,8 @@ export function Nav({
                     }}
                     className={`flex w-full items-center gap-3.5 rounded-xl px-5 py-4 rt-meta tracking-widest transition-colors duration-200 ${
                       isActive 
-                        ? 'bg-ink text-white dark:bg-white dark:text-ink' 
-                        : 'bg-transparent text-ink dark:text-white hover:bg-ink/5 dark:hover:bg-white/5'
+                        ? 'bg-ink text-paper' 
+                        : 'bg-transparent text-ink hover:bg-ink/5'
                     }`}
                   >
                     <Icon className="h-4 w-4" />
