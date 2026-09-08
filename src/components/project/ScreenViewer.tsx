@@ -93,9 +93,23 @@ export function ScreenViewer({
   };
 
   const logical = deviceSize(project.type);
-  const isMobileLayout = vp.w < 900;
-  const availW = isMobileLayout ? vp.w - 40 : vp.w - (project.type === 'mobile' ? 620 : 420);
-  const availH = vp.h - (isMobileLayout ? 260 : 170);
+  
+  let availW = vp.w;
+  let availH = vp.h;
+  if (vp.w >= 1024) {
+    // lg: both columns visible (200px left + 300px right) + margin
+    availW = vp.w - 560;
+    availH = vp.h - 160;
+  } else if (vp.w >= 640) {
+    // sm: only left column visible (200px left) + margin
+    availW = vp.w - 260;
+    availH = vp.h - 160;
+  } else {
+    // mobile: no side columns
+    availW = vp.w - 40;
+    availH = vp.h - 220;
+  }
+  
   const scale = Math.min(availW / logical.w, availH / logical.h, project.type === 'mobile' ? 0.92 : 0.82);
 
   return (
@@ -122,7 +136,7 @@ export function ScreenViewer({
 
         <div className="relative flex min-h-0 flex-1">
           {/* screen rail */}
-          <div className="hidden w-[200px] shrink-0 flex-col justify-center gap-1 border-r border-line px-6 sm:flex">
+          <div className="relative z-10 hidden w-[200px] shrink-0 flex-col justify-center gap-1 border-r border-line bg-paper px-6 sm:flex">
             {project.screens.map((s, i) =>
             <button
               key={s.id}
@@ -202,7 +216,7 @@ export function ScreenViewer({
           </div>
 
           {/* meta column */}
-          <div className="hidden w-[300px] shrink-0 flex-col justify-center border-l border-line px-6 lg:flex">
+          <div className="relative z-10 hidden w-[300px] shrink-0 flex-col justify-center border-l border-line bg-paper px-6 lg:flex">
             <span className="rt-meta text-mid">SCREEN</span>
             <div
               className="mt-2 font-display font-medium tracking-tightest text-ink"
