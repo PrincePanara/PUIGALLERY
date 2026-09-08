@@ -79,9 +79,9 @@ export function Nav({
           <button
             onClick={onHome}
             {...hoverProps('OPEN')}
-            className="group flex items-center gap-3 rt-meta transition-opacity duration-150 ease-expo hover:opacity-70"
+            className="group flex items-center gap-3.5 sm:gap-4 rt-meta transition-opacity duration-150 ease-expo hover:opacity-70"
           >
-            <img src="/LogoP.png" alt="Prince Panara Logo" className="h-4 w-auto dark:invert transition-transform duration-300 ease-out group-hover:rotate-12" />
+            <img src="/LogoP.png" alt="Prince Panara Logo" className="h-6 sm:h-7 w-auto dark:invert transition-transform duration-300 ease-out group-hover:rotate-12" />
             <span className="tracking-widest">PRINCE PANARA</span>
           </button>
 
