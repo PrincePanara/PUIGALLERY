@@ -81,7 +81,7 @@ export function Nav({
             {...hoverProps('OPEN')}
             className="group flex items-center gap-3 rt-meta transition-opacity duration-150 ease-expo hover:opacity-70"
           >
-            <Command className="h-4 w-4 transition-transform duration-300 ease-out group-hover:rotate-12" />
+            <img src="/LogoP.png" alt="Prince Panara Logo" className="h-4 w-auto dark:invert transition-transform duration-300 ease-out group-hover:rotate-12" />
             <span className="tracking-widest">PRINCE PANARA</span>
           </button>
 
