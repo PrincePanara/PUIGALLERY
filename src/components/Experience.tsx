@@ -12,7 +12,6 @@ import { Contact } from './Contact';
 import { Footer } from './Footer';
 import { FinalTerminal } from './FinalTerminal';
 import { EasterEgg } from './EasterEgg';
-import { CustomCursor } from './CustomCursor';
 import { DesignModeOverlay, DesignModeToggle } from './DesignMode';
 import { ProjectNavigator } from './ProjectNavigator';
 import { ProjectTransition } from './ProjectTransition';
@@ -100,7 +99,6 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
   return (
     <div className="w-full bg-paper">
-      <CustomCursor />
       <EasterEgg />
       <DesignModeOverlay />
 

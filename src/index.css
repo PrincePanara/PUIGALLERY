@@ -36,10 +36,6 @@ body {
   width: 100%;
   min-height: 100%;
 }
-.rt-hide-cursor,
-.rt-hide-cursor * {
-  cursor: none !important;
-}
 .rt-meta {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
