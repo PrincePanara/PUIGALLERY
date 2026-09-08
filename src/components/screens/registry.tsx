@@ -11,12 +11,19 @@ export function ScreenRender({ slug, screenId }: {slug: string;screenId: string;
   const imageSrc = screen?.image || `/Screens/${slug}/${screenId}.png`;
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-white">
+    <div 
+      className="relative h-full w-full overflow-y-auto overflow-x-hidden bg-white"
+      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+    >
+      <style>{`
+        .overflow-y-auto::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
       <img 
         src={imageSrc} 
         alt={`${slug} - ${screenId}`}
-        className="absolute inset-0 h-full w-full object-contain object-top"
-        style={{ width: '100%', height: '100%' }}
+        className="block w-full h-auto"
         onError={(e) => {
           // Fallback if the image doesn't exist yet
           e.currentTarget.style.display = 'none';
