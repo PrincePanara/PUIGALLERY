@@ -6,11 +6,11 @@ import { totals } from '../data/projects';
 
 export function SelectedWork() {
   return (
-    <section className="w-full bg-paper px-5 pb-8 pt-8 sm:px-8 sm:pb-12 sm:pt-12">
+    <section className="w-full bg-paper px-5 pb-4 pt-8 sm:px-8 sm:pb-12 sm:pt-12">
       <div className="rt-meta text-mid">01 — INDEX</div>
 
 
-      <div className="mt-8 grid grid-cols-1 gap-10 border-t border-line pt-8 sm:mt-12 sm:grid-cols-3">
+      <div className="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-6 sm:mt-12 sm:gap-10 sm:pt-8">
         {[
         [String(totals.projects).padStart(2, '0'), 'PROJECTS'],
         [String(totals.screens), 'SCREENS'],
