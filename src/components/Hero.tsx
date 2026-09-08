@@ -28,20 +28,7 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-paper pt-16 sm:pt-20">
-      <div className="flex items-start justify-between px-5 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
-          style={{ x: x1, y: y1 }}>
-          
-          <div className="rt-meta text-mid">PRINCE PANARA · PORTFOLIO OS</div>
-          <div className="rt-meta mt-2 text-ink/40">
-            {totals.projects} PROJECTS · {totals.screens} SCREENS
-          </div>
-        </motion.div>
 
-      </div>
 
       <div className="relative px-4 sm:px-6">
         <motion.h1
