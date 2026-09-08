@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { projectBySlug } from '../../data/projects';
 
 /**
@@ -9,6 +9,7 @@ export function ScreenRender({ slug, screenId }: {slug: string;screenId: string;
   const project = projectBySlug(slug);
   const screen = project?.screens.find(s => s.id === screenId);
   const imageSrc = screen?.image || `/Screens/${slug}/${screenId}.png`;
+  const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
 
   return (
     <div 
@@ -20,18 +21,29 @@ export function ScreenRender({ slug, screenId }: {slug: string;screenId: string;
           display: none;
         }
       `}</style>
+      
+      {status === 'loading' && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-off gap-4">
+           <span className="rt-meta text-mid animate-pulse">LOADING UI...</span>
+        </div>
+      )}
+
+      {status === 'error' && (
+        <div className="absolute inset-0 flex items-center justify-center bg-off p-4">
+           <span className="rt-meta text-mid text-center">
+             NO IMAGE FOUND<br/><br/>
+             <span className="text-xs opacity-50">{imageSrc}</span>
+           </span>
+        </div>
+      )}
+
       <img 
         src={imageSrc} 
         alt={`${slug} - ${screenId}`}
-        className="block w-full h-auto"
-        onError={(e) => {
-          // Fallback if the image doesn't exist yet
-          e.currentTarget.style.display = 'none';
-          const parent = e.currentTarget.parentElement;
-          if (parent) {
-            parent.innerHTML = `<span class="absolute inset-0 flex items-center justify-center rt-meta text-mid text-center">NO IMAGE FOUND<br/>/Screens/${slug}/${screenId}.png</span>`;
-          }
-        }}
+        className="block w-full h-auto transition-opacity duration-300"
+        style={{ opacity: status === 'loaded' ? 1 : 0 }}
+        onLoad={() => setStatus('loaded')}
+        onError={() => setStatus('error')}
       />
     </div>
   );
