@@ -84,7 +84,7 @@ export function Nav({
             <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-ink/10 overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105 group-hover:border-ink/20">
               <img src="/LogoP.png" alt="Prince Panara Logo" className="h-full w-full object-cover rounded-full dark:invert transition-transform duration-300 ease-out group-hover:-rotate-12" />
             </div>
-            <span className="tracking-widest">PRINCE PANARA</span>
+            <span className="tracking-widest font-semibold">PRINCE PANARA</span>
           </button>
 
           {/* Center: Desktop Navigation */}
