@@ -11,11 +11,11 @@ export function ScreenRender({ slug, screenId }: {slug: string;screenId: string;
   const imageSrc = screen?.image || `/Screens/${slug}/${screenId}.png`;
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-ink">
+    <div className="relative h-full w-full overflow-hidden bg-white">
       <img 
         src={imageSrc} 
         alt={`${slug} - ${screenId}`}
-        className="absolute inset-0 h-full w-full object-cover object-top"
+        className="absolute inset-0 h-full w-full object-contain object-top"
         style={{ width: '100%', height: '100%' }}
         onError={(e) => {
           // Fallback if the image doesn't exist yet
