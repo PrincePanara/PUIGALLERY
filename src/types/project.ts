@@ -40,5 +40,8 @@ export interface Project {
   /** one line, editorial */
   line: string;
   accent: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  ogImage?: string;
   screens: Screen[];
 }

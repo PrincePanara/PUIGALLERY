@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { UIProvider } from './contexts/UIContext';
 import { Experience } from './components/Experience';
 
@@ -10,9 +11,15 @@ interface AppProps {
 }
 
 export function App({ skipBoot = false, designMode = false }: AppProps) {
-  return (
-    <UIProvider initialDesignMode={designMode}>
-      <Experience skipBoot={skipBoot} />
-    </UIProvider>);
+  useEffect(() => {
+    document.documentElement.classList.add('antialiased', 'bg-paper');
+  }, []);
 
+  return (
+    <HelmetProvider>
+      <UIProvider initialDesignMode={designMode}>
+        <Experience skipBoot={skipBoot} />
+      </UIProvider>
+    </HelmetProvider>
+  );
 }

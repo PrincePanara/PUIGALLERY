@@ -7,6 +7,7 @@ import { AllScreens, type ViewMode } from './AllScreens';
 import { ProjectDNA } from './ProjectDNA';
 import { ProjectOutro } from './ProjectOutro';
 import { ScreenZoom } from './ScreenZoom';
+import { SEO } from '../SEO';
 
 export function ProjectPage({
   project,
@@ -91,6 +92,34 @@ export function ProjectPage({
       transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
       className="w-full bg-paper">
       
+      <SEO 
+        title={project.seoTitle || `${project.name} — ${project.category} by Prince Panara`}
+        description={project.seoDescription || project.line}
+        image={project.ogImage}
+        url={`/projects/${project.slug}`}
+        type="article"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://princepanara.com"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Work",
+            "item": "https://princepanara.com/#work"
+          },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": project.name,
+            "item": `https://princepanara.com/projects/${project.slug}`
+          }]
+        }}
+      />
+
       {/* header — minimal, then straight into the product */}
       <header className="w-full px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-32">
         <div className="flex items-baseline justify-between border-b border-line pb-5">

@@ -17,16 +17,33 @@ import { DesignModeOverlay, DesignModeToggle } from './DesignMode';
 import { ProjectNavigator } from './ProjectNavigator';
 import { ProjectTransition } from './ProjectTransition';
 import { ProjectPage } from './project/ProjectPage';
+import { SEO } from './SEO';
+import { NotFound } from './NotFound';
 
-type Phase = 'boot' | 'reveal' | 'site' | 'exit';
+type Phase = 'boot' | 'reveal' | 'site' | 'exit' | '404';
 
 export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
   const { reduced } = useUI();
-  const [phase, setPhase] = useState<Phase>(skipBoot ? 'site' : 'boot');
+  const [phase, setPhase] = useState<Phase>(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      const validPaths = ['/', '/about', '/work', '/contact'];
+      if (path.startsWith('/projects/')) {
+        const pSlug = path.split('/projects/')[1]?.split('/')[0];
+        if (!projects.find(p => p.slug === pSlug)) return '404';
+      } else if (!validPaths.includes(path)) {
+        return '404';
+      }
+    }
+    return skipBoot ? 'site' : 'boot';
+  });
   const [project, setProject] = useState<Project | null>(() => {
     if (typeof window !== 'undefined') {
-      const pSlug = new URLSearchParams(window.location.search).get('project');
-      if (pSlug) return projects.find(p => p.slug === pSlug) || null;
+      const path = window.location.pathname;
+      if (path.startsWith('/projects/')) {
+        const pSlug = path.split('/projects/')[1]?.split('/')[0] || null;
+        if (pSlug) return projects.find(p => p.slug === pSlug) || null;
+      }
     }
     return null;
   });
@@ -43,15 +60,22 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && !window.history.state) {
-      const params = new URLSearchParams(window.location.search);
-      const pSlug = params.get('project');
-      const sId = params.get('screen');
+      const path = window.location.pathname;
+      let pSlug = null;
+      let sId = null;
+      
+      if (path.startsWith('/projects/')) {
+        const parts = path.split('/');
+        pSlug = parts[2] || null;
+        sId = new URLSearchParams(window.location.search).get('screen'); // keeping screen zoom in query for now to avoid deep paths
+      }
+
       if (sId && pSlug) {
         window.history.replaceState({ level: 'screen', slug: pSlug, screenId: sId }, '', window.location.search);
       } else if (pSlug) {
-        window.history.replaceState({ level: 'project', slug: pSlug }, '', window.location.search);
+        window.history.replaceState({ level: 'project', slug: pSlug }, '', path);
       } else {
-        window.history.replaceState({ level: 'home' }, '', window.location.pathname);
+        window.history.replaceState({ level: 'home' }, '', path);
       }
     }
 
@@ -93,7 +117,7 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
   const openProject = useCallback(
     (p: Project, origin?: DOMRect) => {
       if (typeof window !== 'undefined' && window.history.state?.slug !== p.slug) {
-        window.history.pushState({ level: 'project', slug: p.slug }, '', `?project=${p.slug}`);
+        window.history.pushState({ level: 'project', slug: p.slug }, '', `/projects/${p.slug}`);
       }
       const o = origin ?
       { x: origin.left + origin.width / 2, y: origin.top + origin.height / 2 } :
@@ -111,7 +135,7 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
   const closeProject = useCallback(() => {
     if (typeof window !== 'undefined' && window.history.state?.level !== 'home') {
-      window.history.pushState({ level: 'home' }, '', window.location.pathname);
+      window.history.pushState({ level: 'home' }, '', '/');
     }
     setProject(null);
     const t = window.setTimeout(() => {
@@ -137,7 +161,7 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
   const home = useCallback(() => {
     if (typeof window !== 'undefined' && window.history.state?.level !== 'home') {
-      window.history.pushState({ level: 'home' }, '', window.location.pathname);
+      window.history.pushState({ level: 'home' }, '', '/');
     }
     setProject(null);
     setPhase('site');
@@ -146,6 +170,18 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
   return (
     <div className="w-full bg-paper">
+      {!project && (
+        <SEO 
+          url="/"
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Prince Panara",
+            "jobTitle": ["UI/UX Designer", "Product Designer", "Web Designer"],
+            "url": "https://princepanara.com"
+          }}
+        />
+      )}
       <EasterEgg />
       <DesignModeOverlay />
 
@@ -164,7 +200,7 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
 
       {phase === 'reveal' && <BootTransition reduced={reduced} />}
 
-      {phase !== 'boot' &&
+      {(phase === 'site' || phase === 'reveal') &&
       <>
           <Nav
           onHome={home}
@@ -202,6 +238,10 @@ export function Experience({ skipBoot = false }: {skipBoot?: boolean;}) {
           <ProjectNavigator current={project} onSelect={(p) => openProject(p)} onHome={home} />
         </>
       }
+
+      <AnimatePresence>
+        {phase === '404' && <NotFound key="404" onHome={home} />}
+      </AnimatePresence>
 
       <ProjectTransition
         active={Boolean(pending)}
