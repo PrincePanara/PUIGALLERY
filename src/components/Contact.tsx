@@ -5,8 +5,7 @@ import { useUI } from '../contexts/UIContext';
 const LINKS: [string, string][] = [
 ['EMAIL', 'mailto:hello@princepanara.design'],
 ['TWITTER', 'https://twitter.com'],
-['GITHUB', 'https://github.com'],
-['INSTAGRAM', 'https://instagram.com']];
+['GITHUB', 'https://github.com']];
 
 
 
@@ -21,7 +20,7 @@ export function Contact({ onExit }: {onExit: () => void;}) {
         <span className="rt-meta text-mid">RESPONDS IN 24H</span>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid grid-cols-1 border-t border-line sm:grid-cols-3">
         {LINKS.map(([label, href]) =>
         <a
           key={label}
@@ -29,7 +28,7 @@ export function Contact({ onExit }: {onExit: () => void;}) {
           target={href.startsWith('http') ? '_blank' : undefined}
           rel="noreferrer"
           {...hoverProps('OPEN')}
-          className="group flex items-center justify-between border-b border-line px-1 py-7 transition-colors duration-150 ease-expo hover:bg-ink hover:text-paper sm:border-r sm:last:border-r-0">
+          className="group flex items-center justify-between border-b border-line px-1 py-7 transition-colors duration-150 ease-expo hover:bg-ink hover:text-paper sm:border-b-0 sm:border-r sm:last:border-r-0">
           
             <span className="font-display text-[22px] font-medium tracking-[-0.03em] sm:text-[26px]">
               {label}
