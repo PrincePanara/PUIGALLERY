@@ -11,6 +11,9 @@ export const projects: Project[] = [
     category: 'WEB APPLICATION',
     role: 'PRODUCT DESIGN',
     year: '2026',
+    status: 'LIVE',
+    line: 'Operational dashboard and scheduling platform for logistics management.',
+    accent: '#18181B',
     screens: [
       {
         id: 'login',
